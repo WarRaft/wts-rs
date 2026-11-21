@@ -1,0 +1,20 @@
+[package]
+name = "wts-rs"
+version = "0.1.0"
+edition = "2024"
+description = "A parser, editor and semantic highlighter for WTS (war3map.wts), the string table of Warcraft III maps"
+license = "CC0-1.0"
+
+[[bin]]
+name = "wts-rs"
+path = "src/main.rs"
+
+[lib]
+name = "wts_rs"
+path = "src/lib.rs"
+
+[dependencies]
+parser-rs = { path = "../parser-rs" }
+
+[dev-dependencies]
+parser-rs = { path = "../parser-rs" }

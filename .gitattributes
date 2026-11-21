@@ -1,0 +1,2 @@
+# WTS files are kept byte for byte: the fixtures test \r\n line breaks and a BOM.
+*.wts -text

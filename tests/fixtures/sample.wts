@@ -1,0 +1,17 @@
+﻿STRING 0
+// Units: h000 (Knight), Name (unam)
+{
+Knight
+}
+
+STRING 1
+// Units: h000 (Knight), Tooltip - Extended (utub)
+{
+A |cffffcc00holy|r warrior.|nStrong against undead.
+
+// this line is text, not a comment
+}
+
+STRING 12
+{
+}
