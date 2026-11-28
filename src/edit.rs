@@ -10,7 +10,7 @@ use crate::ast::Document;
 /// Whether `text` can be a string's text: no line of it may be `}` alone,
 /// which would end it.
 pub fn check_text(text: &str) -> Result<(), String> {
-    if text.lines().any(|l| l.trim() == "}") {
+    if parser_rs::lines::lines(&text).any(|l| l.trim() == "}") {
         return Err("a line that is only `}` would end the string early".into());
     }
     Ok(())
@@ -23,9 +23,7 @@ pub fn check_text(text: &str) -> Result<(), String> {
 pub fn set_string(doc: &Document, id: u32, text: &str) -> Result<Vec<Edit>, String> {
     check_text(text)?;
     let nl = doc.newline;
-    let body: String = text
-        .replace("\r\n", "\n")
-        .split('\n')
+    let body: String = parser_rs::lines::split(text)
         .map(|l| format!("{l}{nl}"))
         .collect();
     match doc.strings.iter().rfind(|e| e.id == Some(id)) {

@@ -32,7 +32,8 @@ pub fn tokenize(src: &str) -> Vec<Token<Tok>> {
     let mut out = Vec::new();
     let (mut line, mut end) = (1, 1);
     let mut inside = false;
-    for (i, raw) in src.split('\n').enumerate() {
+    // Every line, `\r\n`, `\n` or a lone `\r` ending it (`parser_rs::lines`).
+    for (i, raw) in parser_rs::lines::split(src).enumerate() {
         if i > 0 {
             out.push(Token::new(Tok::Newline, line, end, end + 1));
             line += 1;
